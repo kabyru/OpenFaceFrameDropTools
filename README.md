@@ -4,5 +4,7 @@ These executable tools are designed to detect any false-positive frames of valid
 These executables require the MATLAB Runtime 9.5 (R2018b) to be installed on your machine. You can find the installer for it here:
 
 Windows: http://ssd.mathworks.com/supportfiles/downloads/R2018b/deployment_files/R2018b/installers/win64/MCR_R2018b_win64_installer.exe
+
 Linux: http://ssd.mathworks.com/supportfiles/downloads/R2018b/deployment_files/R2018b/installers/glnxa64/MCR_R2018b_glnxa64_installer.zip
+
 macOS (Intel-based): http://ssd.mathworks.com/supportfiles/downloads/R2018b/deployment_files/R2018b/installers/maci64/MCR_R2018b_maci64_installer.dmg.zip
