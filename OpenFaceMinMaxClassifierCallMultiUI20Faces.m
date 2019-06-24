@@ -12,6 +12,13 @@ for faceCount = 0:faceNumber
   totalReferenceWidth = 0;
   totalReferenceLength = 0;
   openFaceDataFiltered = openFaceData(openFaceData.face_id == faceCount,:);
+
+  %Add algos to filter out already unsuccessful frames to exclude them from the counts.
+  openFaceFilteredFailure = openFaceDataFiltered(openFaceDataFiltered.success == 0,:);
+  failedFrame = length(openFaceFilteredFailure.frame);
+
+  openFaceDataFiltered = openFaceDataFiltered(openFaceDataFiltered.success == 1, :);
+
   for i = 1:length(openFaceDataFiltered.frame) %Begin ClassifierCall-like code
       x_mat = [openFaceDataFiltered.x_1(i) openFaceDataFiltered.x_2(i) openFaceDataFiltered.x_3(i) openFaceDataFiltered.x_4(i) openFaceDataFiltered.x_5(i) openFaceDataFiltered.x_6(i) openFaceDataFiltered.x_7(i) openFaceDataFiltered.x_8(i) openFaceDataFiltered.x_9(i) openFaceDataFiltered.x_10(i) openFaceDataFiltered.x_11(i) openFaceDataFiltered.x_12(i) openFaceDataFiltered.x_13(i) openFaceDataFiltered.x_14(i) openFaceDataFiltered.x_15(i) openFaceDataFiltered.x_16(i) openFaceDataFiltered.x_17(i) openFaceDataFiltered.x_18(i) openFaceDataFiltered.x_19(i) openFaceDataFiltered.x_20(i) openFaceDataFiltered.x_21(i) openFaceDataFiltered.x_22(i) openFaceDataFiltered.x_23(i) openFaceDataFiltered.x_24(i) openFaceDataFiltered.x_25(i) openFaceDataFiltered.x_26(i) openFaceDataFiltered.x_27(i) openFaceDataFiltered.x_28(i) openFaceDataFiltered.x_29(i) openFaceDataFiltered.x_30(i) openFaceDataFiltered.x_31(i) openFaceDataFiltered.x_32(i) openFaceDataFiltered.x_33(i) openFaceDataFiltered.x_34(i) openFaceDataFiltered.x_35(i) openFaceDataFiltered.x_36(i) openFaceDataFiltered.x_37(i) openFaceDataFiltered.x_38(i) openFaceDataFiltered.x_39(i) openFaceDataFiltered.x_40(i) openFaceDataFiltered.x_41(i) openFaceDataFiltered.x_42(i) openFaceDataFiltered.x_43(i) openFaceDataFiltered.x_44(i) openFaceDataFiltered.x_45(i) openFaceDataFiltered.x_46(i) openFaceDataFiltered.x_47(i) openFaceDataFiltered.x_48(i) openFaceDataFiltered.x_49(i) openFaceDataFiltered.x_50(i) openFaceDataFiltered.x_51(i) openFaceDataFiltered.x_52(i) openFaceDataFiltered.x_53(i) openFaceDataFiltered.x_54(i) openFaceDataFiltered.x_55(i) openFaceDataFiltered.x_56(i) openFaceDataFiltered.x_57(i) openFaceDataFiltered.x_58(i) openFaceDataFiltered.x_59(i) openFaceDataFiltered.x_60(i) openFaceDataFiltered.x_61(i) openFaceDataFiltered.x_62(i) openFaceDataFiltered.x_63(i) openFaceDataFiltered.x_64(i) openFaceDataFiltered.x_65(i) openFaceDataFiltered.x_66(i) openFaceDataFiltered.x_67(i)];
 
@@ -60,6 +67,8 @@ for faceCount = 0:faceNumber
       %disp(i)
     end
   end
+
+  badFrame = badFrame + failedFrame;
 
   fileBadFrameCount = fileBadFrameCount + badFrame;
   localFrameCountString = num2str(length(openFaceDataFiltered.frame));
