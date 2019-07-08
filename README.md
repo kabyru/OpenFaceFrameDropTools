@@ -1,10 +1,13 @@
-# Open Face Frame Drop Tools
-These executable tools are designed to detect any false-positive frames of valid facial recognition caused by secondary face detection. These tools take OpenFace-generated output CSV files as input and analyze the facial area of each frame against the size of the average facial area and determines whether a frame's facial area is an outlier per a specified area threshold tolerance.
+# OpenFace Secondary Frame Drop Detector Tools
 
-These executables require the MATLAB Runtime 9.5 (R2018b) to be installed on your machine. You can find the installer for it here:
+"OpenFaceFrameDropTools" is a repository of executable tools written in MATLAB designed to detect false-positive facial recognitions. Whether these false recognitions are caused by a "non-face" object or the facial recognition algorithm assigning a certain FaceID to the incorrect face, these executables will tally any false positives and note the frame numbers of issue.
 
-Windows: http://ssd.mathworks.com/supportfiles/downloads/R2018b/deployment_files/R2018b/installers/win64/MCR_R2018b_win64_installer.exe
+## Requirements
 
-Linux: http://ssd.mathworks.com/supportfiles/downloads/R2018b/deployment_files/R2018b/installers/glnxa64/MCR_R2018b_glnxa64_installer.zip
+These executables require the MATLAB Runtime 9.5 (R2018b) to be installed on your Windows machine. You can find the installer for [here.](http://ssd.mathworks.com/supportfiles/downloads/R2018b/deployment_files/R2018b/installers/win64/MCR_R2018b_win64_installer.exe)
 
-macOS (Intel-based): http://ssd.mathworks.com/supportfiles/downloads/R2018b/deployment_files/R2018b/installers/maci64/MCR_R2018b_maci64_installer.dmg.zip
+## How It Works
+
+The inner-workings of each program are similar in structure, but approach the issue of determining false positives in different ways depending on the number of faces being recognized in a single frame.
+
+### Single Face Secondary Frame Drop
