@@ -11,4 +11,13 @@ These executables require the MATLAB Runtime 9.5 (R2018b) to be installed on you
 The inner-workings of each program are similar in structure, but approach the issue of determining false positives in different ways depending on the number of faces being recognized in a single frame.
 
 ### Single Face Secondary Frame Drop
-For videos processed by OpenFace FeatureExtraction.exe and are intended to recognize one face only, FeatureExtractionSecondaryFrameDropAnalyzer.exe should be used. 
+For videos processed by OpenFace FeatureExtraction.exe and are intended to recognize one face only, FeatureExtractionSecondaryFrameDropAnalyzer.exe should be used. This script will run through the generated CSV file by OpenFace and compare the overall facial area of each detected face frame to the average face frame size as a whole. Frames with facial areas smaller than the determined average multipled by a determined tolerance threshold (default .5) are deemed as false positives, and are accounted for to determine a percentage of false positives as compared to the number of frames in the video as a whole. 
+
+### Multi Face Secondary Frame Drop
+For videos processed by OpenFace FaceLandmarkVidMulti.exe and are intended to recognize multiple faces in one frame, OpenFace_MultiFace_Secondary_Face_Analyzer.exe should be used. This script will run through the generated CSV file by OpenFace and compare the overall facial area of each detected face frame to the average face frame size of each face as a whole. Frames with facial areas smaller than the determined average multipled by a determined tolerance threshold (default .5) are deemed as false positives, and are accounted for to determine a percentage of false positives as compared to the number of frames in the video as a whole.
+
+## What Will These Scripts Generate?
+These scripts will generate a CSV file depicting the number of false positives for each detected face.
+
+## Any Issues?
+The current outstanding issues is to transition the reference frame of each script away from using the average facial size, but rather the facial size of one of the first couple of frames. This will ensure a more perfect ROC curve, where the current implementation of the reference frame generates an accurate but imperfect ROC curve.
